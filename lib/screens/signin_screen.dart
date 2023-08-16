@@ -1,3 +1,4 @@
+import 'package:firebase_signin/screens/signup_screen.dart';
 import 'package:firebase_signin/screens/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import '../reusable_widgets/reusable_widget.dart';
@@ -38,9 +39,15 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 30
               ),
                 reusableTextField("Enter Username", Icons.person_outlined, false, _emailTextController),
-          SizedBox(
-              height: 30),
+              SizedBox(
+              height: 30
+              ),
               reusableTextField("Enter Password", Icons.lock, false, _emailTextController),
+              SizedBox(
+                  height: 30
+              ),
+              signInSignUpButton(context, true,() {}),
+              signUpOption()
            ],
           ),
         ),
@@ -48,5 +55,22 @@ class _SignInScreenState extends State<SignInScreen> {
      ),
     );
   }
-
+  Row  signUpOption(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have account?",
+            style: TextStyle(color: Colors.white70)),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
+          },
+          child: const Text(
+            "Sign Up",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    );
+  }
 }
